@@ -18,11 +18,11 @@ def main():
             case "echo":
                 print(f"{command.split(" ",1)[1]}")
             case "type":
-                if(command.split(" ",1)[1] in built_in):
-                    cd="type "+command.split(" ",1)[1]
-                    os.system("type "+command.split(" ",1)[1])
-                else: 
+                
+                os.system("type "+command.split(" ",1)[1])
+                '''else: 
                     print(f"{command.split(" ",1)[1]}: not found")
+                '''
             case _:
                 print(f"{command}: command not found")
     
