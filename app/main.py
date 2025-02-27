@@ -23,7 +23,7 @@ def main():
                 if(command.split(" ",1)[1] in built_in):
                     print(f"{command.split(" ",1)[1]} is a shell builtin")
                 else: 
-                    invalidCommandPrompt(command)
+                    invalidCommandPrompt(command.split(" ",1)[1])
             case _:
                 invalidCommandPrompt(command)
     
