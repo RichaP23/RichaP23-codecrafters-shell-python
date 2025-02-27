@@ -13,7 +13,8 @@ def main():
         first_word=command.split(" ",1)[0]
         if(first_word=="echo"):
             print(f"{command.split(" ",1)[1]}")
-        print(f"{command}: command not found")
+        else:
+            print(f"{command}: command not found")
 
 
 
