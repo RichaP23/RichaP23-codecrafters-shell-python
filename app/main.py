@@ -10,6 +10,9 @@ def main():
         command=input()
         if(command=="exit 0"):
             exit(0)
+        first_word=command.split(" ",1)[0]
+        if(first_word=="echo"):
+            print(f"{command.split(" ",1)[1]}")
         print(f"{command}: command not found")
 
 
