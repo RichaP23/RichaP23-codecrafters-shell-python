@@ -19,7 +19,7 @@ def main():
                 print(f"{command.split(" ",1)[1]}")
             case "type":
                 if(command.split(" ",1)[1] in built_in):
-                    print(f"{os.system(command.split(" ",1)[1])}")
+                    print(f"{os.system(type command.split(" ",1)[1])}")
                 else: 
                     print(f"{command.split(" ",1)[1]}: not found")
             case _:
