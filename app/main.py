@@ -1,6 +1,7 @@
 import sys
 
-
+def invalidCommandPrompt(command):
+    print(f"{command}: command not found")
 def main():
     while(True):
         # Uncomment this block to pass the first stage
@@ -21,8 +22,10 @@ def main():
             case "type":
                 if(command.split(" ",1)[1] in built_in):
                     print(f"{command.split(" ",1)[1]} is a shell builtin")
+                else: 
+                    invalidCommandPrompt(command)
             case _:
-                print(f"{command}: command not found")
+                invalidCommandPrompt(command)
     
         
 
