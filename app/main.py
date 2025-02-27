@@ -1,5 +1,5 @@
 import sys
-
+import os
 def main():
     while(True):
         # Uncomment this block to pass the first stage
@@ -19,7 +19,7 @@ def main():
                 print(f"{command.split(" ",1)[1]}")
             case "type":
                 if(command.split(" ",1)[1] in built_in):
-                    print(f"{command.split(" ",1)[1]} is a shell builtin")
+                    print(f"{os.system(command.split(" ",1)[1])}")
                 else: 
                     print(f"{command.split(" ",1)[1]}: not found")
             case _:
