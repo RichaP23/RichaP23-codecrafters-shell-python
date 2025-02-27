@@ -8,7 +8,7 @@ def main():
 
         # Wait for user input
         command=input()
-        built_in={"exit","echo"}
+        built_in={"exit","echo","type"}
         #checking for exit input by user
         if(command=="exit 0"):
             exit(0)
