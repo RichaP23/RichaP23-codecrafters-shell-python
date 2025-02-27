@@ -20,7 +20,7 @@ def main():
             case "type":
                 if(command.split(" ",1)[1] in built_in):
                     cd="type "+command.split(" ",1)[1]
-                    print(f"{os.system(cd)}")
+                    print(f"{{os.system}({cd})}")
                 else: 
                     print(f"{command.split(" ",1)[1]}: not found")
             case _:
