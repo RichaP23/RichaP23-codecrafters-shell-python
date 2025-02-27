@@ -8,13 +8,23 @@ def main():
 
         # Wait for user input
         command=input()
+        built_in={"exit","echo"}
+        #checking for exit input by user
         if(command=="exit 0"):
             exit(0)
+        #getting the first word usually command
         first_word=command.split(" ",1)[0]
-        if(first_word=="echo"):
-            print(f"{command.split(" ",1)[1]}")
-        else:
-            print(f"{command}: command not found")
+        #checking for first word 
+        match first_word:
+            case "echo":
+                print(f"{command.split(" ",1)[1]}")
+            case "type":
+                if(command.split(" ",1)[1] in built_in):
+                    print(f"{command.split(" ",1)[1]} is a shell builtin")
+            case _:
+                print(f"{command}: command not found")
+    
+        
 
 
 
