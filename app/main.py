@@ -42,7 +42,7 @@ def main():
                     for files in words:
                         files='"'+files+'"'
                         result=os.system(f"cat {files}")
-                        print(result.stdout,end="")
+                        print(result,end="")
                 except FileNotFoundError:
                     print(f"{first_word}: {dir}: No such file or directory")
 
