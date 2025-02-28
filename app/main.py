@@ -22,7 +22,7 @@ def quotedText(text):
                 word=""
                 openQuote=False
             else: 
-                word=regex.sub(word,r"\\",i)
+                word += "\\" + i  # Add backslash before the quote
         else:
             word+=i
     print(textList)
