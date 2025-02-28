@@ -1,6 +1,7 @@
 import sys
 import os
 import subprocess
+from pathlib import Path
 def find_command(command):
     paths = os.environ.get('PATH') or ""    
     for path in map(lambda s: f"{s}/{command}", paths.split(":")):
