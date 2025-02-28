@@ -4,8 +4,8 @@ import subprocess
 from pathlib import Path
 def quotedText(text):
     textList=[]
+    word=""
     for i in text : 
-        word=""
         openQuote=False
         #this is the start quote
         if(i=="'" or i=='"' and openQuote==False):
@@ -17,6 +17,7 @@ def quotedText(text):
             word=""
         else:
             word+=i
+        
     return textList
 def find_command(command):
     paths = os.environ.get('PATH') or ""    
