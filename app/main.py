@@ -13,7 +13,7 @@ def quotedText(text):
             continue
         #if quote is already opened : 
         elif(i=="'" or i=='"' and openQuote==True):
-            textList.append(word)
+            textList.append(word.strip())
             word=""
             openQuote=False
         else:
