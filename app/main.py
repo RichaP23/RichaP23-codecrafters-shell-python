@@ -30,6 +30,7 @@ def main():
                         found = True
                         try:
                             result = subprocess.run(path+"/"+command)
+                            print(path+"/"+command)
                             print(result.stdout, end="")
                             print(result.stderr, end="") #print stderr as well.
                         except FileNotFoundError:
