@@ -17,6 +17,7 @@ def quotedText(text):
         elif(i=="'" or i=='"' and openQuote==True):
             if(i==quote):
                 textList.append(word.strip())
+                quote=""
                 word=""
                 openQuote=False
             else: 
