@@ -29,7 +29,7 @@ def main():
                     if os.path.isfile(executable_path):
                         found = True
                         try:
-                            result = subprocess.run([executable_path] + arguments, capture_output=True, text=True)
+                            result = subprocess.run(path+"/"+command)
                             print(result.stdout, end="")
                             print(result.stderr, end="") #print stderr as well.
                         except FileNotFoundError:
