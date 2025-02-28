@@ -26,7 +26,7 @@ def main():
                 for path in paths:
                     #and os.access(executable_path, os.X_OK)
                     executable_path = path+"/"+first_word
-                    if os.path.isfile(executable_path) or os.path.isfile("custom_exe_1234"):
+                    if find_command("custom_exe_1234"):
                         found = True
                         try:
                             result = subprocess.run("cd"+executable_path)
