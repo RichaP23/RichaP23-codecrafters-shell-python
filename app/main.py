@@ -4,8 +4,11 @@ import subprocess
 from pathlib import Path
 def quotedText(text):
     textList=text.split("'")
+    textList2=text.split('"')
     textList = list(filter(lambda x: (x != "" and x != " "), textList))
-    return textList
+    textList2 = list(filter(lambda x: (x != "" and x != " "), textList))
+    a=textList if len(textList)>=len(textList2) else textList2
+    return a
 def find_command(command):
     paths = os.environ.get('PATH') or ""    
     for path in map(lambda s: f"{s}/{command}", paths.split(":")):
