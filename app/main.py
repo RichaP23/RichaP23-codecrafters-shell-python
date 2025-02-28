@@ -30,6 +30,8 @@ def main():
                 print(f"{command.split(" ",1)[1]}")
             case "type":
                 os.system(command)
+            case "pwd":
+                os.system("pwd")
             case _:
                 found = False
                 for path in paths:
