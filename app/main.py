@@ -5,6 +5,7 @@ def main():
     while(True):
         PATH=os.environ.get("PATH","")
         paths=PATH.split(":")
+        print(paths)
         # Uncomment this block to pass the first stage
         sys.stdout.write("$ ")
         # Wait for user input
