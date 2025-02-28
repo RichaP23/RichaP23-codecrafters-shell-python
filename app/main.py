@@ -29,7 +29,7 @@ def main():
             case "echo":
                 print(f"{command.split(" ",1)[1]}")
             case "type":
-                subprocess.run("type "+command.split(" ",1)[1])
+                os.system(command)
             case _:
                 found = False
                 for path in paths:
