@@ -49,7 +49,7 @@ def main():
                         elif(w=="../"):
                             os.chdir(os.pardir)
                             w=""
-                        elif(w=="~"):
+                        elif(ch=="~"):
                             #os.system("cd $HOME")
                             home=os.getenv("HOME")
                             os.chdir(home)
