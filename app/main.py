@@ -4,7 +4,7 @@ def main():
     while(True):
         # Uncomment this block to pass the first stage
         sys.stdout.write("$ ")
-
+        env_variables=os.system("echo $PATH").split[":"]
         # Wait for user input
         command=input()
         built_in={"exit","echo","type"}
@@ -18,13 +18,14 @@ def main():
             case "echo":
                 print(f"{command.split(" ",1)[1]}")
             case "type":
-                
                 os.system("type "+command.split(" ",1)[1])
-                '''else: 
-                    print(f"{command.split(" ",1)[1]}: not found")
-                '''
             case _:
-                print(f"{command}: command not found")
+                #checking for env variable 
+                envCheck=os.system("echo "+first_word.upper)
+                if(envCheck!=0):
+                    os.system(command)
+                else: 
+                    print(f"{command}: command not found")
     
         
 
