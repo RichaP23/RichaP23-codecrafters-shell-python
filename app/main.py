@@ -38,10 +38,9 @@ def main():
                 os.system("pwd")
             case "cat":
                 words=quotedText(command.split(" ",1)[1])
-                print(words)
                 try: 
                     for files in words:
-                        print(os.system(f"cat {files}"),endswith=" ")
+                        print(os.system(f"cat "{files}""),endswith=" ")
                 except FileNotFoundError:
                     print(f"{first_word}: {dir}: No such file or directory")
 
