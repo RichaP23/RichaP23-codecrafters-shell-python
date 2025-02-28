@@ -3,9 +3,7 @@ import os
 import subprocess
 from pathlib import Path
 def iterSingleString(var):
-    l=var.split(" ")
-    print(l)
-    singleStringElements=[i for i in l if i.startswith("'") and i.endswith("'")]
+    l=var.split("'")
     print(singleStringElements)
     return singleStringElements
 def find_command(command):
