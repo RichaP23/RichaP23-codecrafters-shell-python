@@ -34,7 +34,7 @@ def main():
                 os.system("pwd")
             case "cd":
                 #with path : 
-                os.system(command)
+                os.chdir(command.split(" ",1)[1])
             case _:
                 found = False
                 for path in paths:
