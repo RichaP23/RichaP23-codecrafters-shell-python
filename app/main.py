@@ -41,7 +41,7 @@ def main():
                 try: 
                     for files in words:
                         files='"'+files+'"'
-                        result = subprocess.run("cat" + files, capture_output=True, text=True)
+                        result = subprocess.run(f"cat {files}", capture_output=True, text=True)
                         print(result.stdout, end="")
                 except FileNotFoundError:
                     print(f"{first_word}: {files}: No such file or directory")
