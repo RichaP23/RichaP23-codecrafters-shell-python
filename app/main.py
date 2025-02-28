@@ -4,6 +4,7 @@ import subprocess
 from pathlib import Path
 def iterSingleString(var):
     l=var.split(" ")
+    print(l)
     singleStringElements=[i for i in l if i.startswith("'") and i.endswith("'")]
     print(singleStringElements)
     return singleStringElements
