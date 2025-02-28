@@ -5,7 +5,6 @@ def main():
     while(True):
         PATH=os.environ.get("PATH","")
         paths=PATH.split(":")
-        print(paths)
         # Uncomment this block to pass the first stage
         sys.stdout.write("$ ")
         # Wait for user input
@@ -33,10 +32,10 @@ def main():
                             print(result.stdout, end="")
                             print(result.stderr, end="") #print stderr as well.
                         except FileNotFoundError:
-                            print(f"{first_word}: command not found")
+                            print(f"{first_word}: command not found entering file check look but not finding path")
                         break
                     else: 
-                        print(f"{command}: command not found")
+                        print(f"{command}: command not found its not entering file check loop")
         
         
 
