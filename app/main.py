@@ -33,6 +33,7 @@ def main():
             case "echo":
                 words=iterSingleString(command.split(" ",1)[1])
                 statement=' '.join(words)
+                print(statement)
                 command=first_word+" "+statement
                 os.system(command)
             case "type":
