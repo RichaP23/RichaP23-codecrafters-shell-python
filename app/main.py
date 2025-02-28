@@ -40,7 +40,7 @@ def main():
                 words=quotedText(command.split(" ",1)[1])
                 try: 
                     for files in words:
-                        os.system(f"cat {files}",endswith=" ")
+                        print(os.system(f"cat {files}"),endswith=" ")
                 except FileNotFoundError:
                     print(f"{first_word}: {dir}: No such file or directory")
 
