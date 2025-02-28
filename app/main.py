@@ -43,7 +43,7 @@ def main():
         match first_word:
             case "echo":
                 words=command.split(" ",1)[1]
-                if(words.startswith=="'" and words.endswith=="'"):
+                if(words.startswith("'") and words.endswith("'")):
                     os.system(command)
             case "type":
                 os.system(command)
