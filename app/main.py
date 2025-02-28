@@ -51,7 +51,8 @@ def main():
                             w=""
                         elif(w=="~"):
                             #os.system("cd $HOME")
-                            os.chdir(os.path.expanduser("~"))
+                            home=os.getenv("HOME")
+                            os.chdir(home)
                             w=""
                         else:
                             w+="c"
