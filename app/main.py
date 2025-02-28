@@ -48,6 +48,7 @@ def main():
                     else: 
                         
                         print(f"{command}: command not found")
+                        break
         
         
 
