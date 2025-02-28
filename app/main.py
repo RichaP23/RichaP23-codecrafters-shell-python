@@ -9,12 +9,12 @@ def quotedText(text):
     openQuote=False
     for i in text : 
         #this is the start quote
-        if(i=="'" or i=='"' and openQuote==False):
+        if((i=="'" or i=='"') and openQuote==False):
             openQuote=True
             quote=i
             continue
         #if quote is already opened : 
-        elif(i=="'" or i=='"' and openQuote==True):
+        elif((i=="'" or i=='"') and openQuote==True):
             if(i==quote):
                 textList.append(word.strip())
                 quote=""
