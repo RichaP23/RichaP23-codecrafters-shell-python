@@ -46,10 +46,8 @@ def main():
                             print(f"{first_word}: command not found")
                         break
                     else: 
-                        if(len(command.split(" "))==1):
-                            print("$ ")
-                        else: 
-                            print(f"{command}: command not found")
+                        
+                        print(f"{command}: command not found")
         
         
 
