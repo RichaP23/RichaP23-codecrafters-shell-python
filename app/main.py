@@ -38,6 +38,7 @@ def main():
                 os.system("pwd")
             case "cat":
                 words=quotedText(command.split(" ",1)[1])
+                print(words)
                 try: 
                     for files in words:
                         print(os.system(f"cat {files}"),endswith=" ")
