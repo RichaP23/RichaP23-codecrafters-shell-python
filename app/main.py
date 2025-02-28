@@ -25,7 +25,7 @@ def main():
                 found = False
                 for path in paths:
                     #and os.access(executable_path, os.X_OK)
-                    executable_path = os.path.join(path, first_word)
+                    executable_path = path+"/"+first_word
                     if os.path.isfile(executable_path):
                         found = True
                         try:
