@@ -40,9 +40,9 @@ def main():
                         found = True
                         try:
                             if(command.split(" ",1)[1].startswith("/tmp")):
-                                command=command.split(" ",1)[0]+" custom_exe_8405"
-                    
-                            os.system(pathExecutable+" "+command.split(" ",1)[1])
+                                os.system(command.split(" ",1)[1])
+                            else:
+                                os.system(pathExecutable+" "+command.split(" ",1)[1])
                            
                         except FileNotFoundError:
                             print(f"{first_word}: command not found entering file check look but not finding path")
