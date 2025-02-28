@@ -2,6 +2,21 @@ import sys
 import os
 import subprocess
 from pathlib import Path
+def iterSingleString(var):
+    singleStringElements=[]
+    startQuote=False
+    word=""
+    for i in var:
+        if(i=="'"):
+            if(startQuote):
+                singleStringElements.append(word)
+                startQuote=False
+                word=""
+            else:
+                startQuote=True
+        else:
+            word+=var
+    return singleStringElements
 def find_command(command):
     paths = os.environ.get('PATH') or ""    
     for path in map(lambda s: f"{s}/{command}", paths.split(":")):
@@ -27,11 +42,21 @@ def main():
         #checking for first word 
         match first_word:
             case "echo":
-                print(f"{command.split(" ",1)[1]}")
+                words=command.split(" ",1)[1]
+                if(words.startswith=="'" and words.endswith=="'"):
+                    print(words)
             case "type":
                 os.system(command)
             case "pwd":
                 os.system("pwd")
+            case "cat":
+                words=iterSingleString(command.split(" ",1)[1])
+                try: 
+                    for files in words:
+                        os.system(f"cat {files}",endswith=" ")
+                except FileNotFoundError:
+                    print(f"{first_word}: {dir}: No such file or directory")
+
             case "cd":
                 #with path : 
                 try: 
