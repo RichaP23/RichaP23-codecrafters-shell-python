@@ -39,8 +39,8 @@ def main():
                     if pathExecutable:
                         found = True
                         try:
-                            if(command.split(" ",1)[1].startswith("/tmp")):
-                                os.system(command.split(" ",1)[1])
+                            if(command.split(" ",1)[2].startswith("/tmp")):
+                                os.system(command)
                             else:
                                 os.system(pathExecutable+" "+command.split(" ",1)[1])
                            
