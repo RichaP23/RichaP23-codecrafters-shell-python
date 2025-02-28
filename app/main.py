@@ -3,19 +3,8 @@ import os
 import subprocess
 from pathlib import Path
 def iterSingleString(var):
-    singleStringElements=[]
-    startQuote=False
-    word=""
-    for i in var:
-        if(i=="'"):
-            if(startQuote):
-                singleStringElements.append(word)
-                startQuote=False
-                word=""
-            else:
-                startQuote=True
-        else:
-            word+=var
+    l=var.split(" ")
+    singleStringElements=[i for i in l if l.startswith("'") and l.endswith("'")]
     return singleStringElements
 def find_command(command):
     paths = os.environ.get('PATH') or ""    
