@@ -43,10 +43,10 @@ def main():
                             #os.system(pathExecutable+" "+command.split(" ",1)[1])
                             os.system(command)
                         except FileNotFoundError:
-                            print(f"{first_word}: command not found entering file check look but not finding path")
+                            print(f"{first_word}: command not found")
                         break
                     else: 
-                        print(f"{command}: command not found its not entering file check loop")
+                        print(f"{command}: command not found")
         
         
 
