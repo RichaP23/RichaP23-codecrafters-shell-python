@@ -20,7 +20,8 @@ def main():
                 os.system("type "+command.split(" ",1)[1])
             case _:
                 #checking for env variable 
-                envCheck=os.system("echo "+first_word.upper)
+                f=first_word.upper
+                envCheck=os.system("echo "+f)
                 if(envCheck!=0):
                     os.system(command)
                 else: 
