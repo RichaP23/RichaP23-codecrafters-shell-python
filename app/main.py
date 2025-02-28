@@ -40,7 +40,7 @@ def main():
                 words=quotedText(command.split(" ",1)[1])
                 try: 
                     for files in words:
-                        files='"'+files+'"'
+                        files="'"+files+"'"
                         result = subprocess.run(f"cat {files}", capture_output=True, text=True)
                         print(result.stdout, end="")
                 except FileNotFoundError:
