@@ -1,6 +1,14 @@
 import sys
 import os
 import subprocess
+def find_command(command):
+    paths = os.environ.get('PATH') or ""    
+    for path in map(lambda s: f"{s}/{command}", paths.split(":")):
+        if Path(path).exists():
+            return path
+                    
+    return None
+
 def main():
     while(True):
         PATH=os.environ.get("PATH","")
