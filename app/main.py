@@ -4,7 +4,7 @@ import subprocess
 from pathlib import Path
 def iterSingleString(var):
     l=var.split(" ")
-    singleStringElements=[i for i in l if l.startswith("'") and l.endswith("'")]
+    singleStringElements=[i[1-len(i):-1] for i in l if i.startswith("'") and i.endswith("'")]
     return singleStringElements
 def find_command(command):
     paths = os.environ.get('PATH') or ""    
