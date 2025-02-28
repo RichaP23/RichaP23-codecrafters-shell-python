@@ -24,7 +24,6 @@ def quotedText(text):
                 word+=i
         else:
             word+=i
-    print(textList)
     return textList
 def find_command(command):
     paths = os.environ.get('PATH') or ""    
