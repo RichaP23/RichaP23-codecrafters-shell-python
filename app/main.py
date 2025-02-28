@@ -41,7 +41,7 @@ def main():
                 try: 
                     for files in words:
                         files='"'+files+'"'
-                        print(os.system(f"cat {files}"),endswith=" ")
+                        print(os.system(f"cat {files}"),end=" ")
                 except FileNotFoundError:
                     print(f"{first_word}: {dir}: No such file or directory")
 
