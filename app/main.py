@@ -42,9 +42,10 @@ def main():
         #checking for first word 
         match first_word:
             case "echo":
-                words=command.split(" ",1)[1]
-                if(words.startswith("'") and words.endswith("'")):
-                    os.system(command)
+                words=iterSingleString(command.split(" ",1)[1])
+                statement=' '.join(words)
+                command=first_word+" "+statement
+                os.system(command)
             case "type":
                 os.system(command)
             case "pwd":
