@@ -4,7 +4,6 @@ def main():
     while(True):
         # Uncomment this block to pass the first stage
         sys.stdout.write("$ ")
-        env_variables=os.system("echo $PATH").split[":"]
         # Wait for user input
         command=input()
         built_in={"exit","echo","type"}
