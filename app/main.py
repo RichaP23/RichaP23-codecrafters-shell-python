@@ -50,8 +50,7 @@ def main():
                             os.chdir(os.pardir)
                             w=""
                         elif(w=="~"):
-                            a=find_command("home")
-                            os.system(a)
+                            os.system("cd $HOME")
                         else:
                             w+="c"
                             flag=True
