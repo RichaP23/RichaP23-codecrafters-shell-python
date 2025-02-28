@@ -39,7 +39,7 @@ def main():
                     if pathExecutable:
                         found = True
                         try:
-                            if(command.split(" ",1)[1].startsWith("/tmp")):
+                            if(command.split(" ",1)[1].startswith("/tmp")):
                                 command.split(" ",1)[1]="custom_exe_8405"
                             os.system(pathExecutable+" "+command.split(" ",1)[1])
                            
