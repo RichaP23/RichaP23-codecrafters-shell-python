@@ -37,7 +37,7 @@ def main():
                 try: 
                     os.chdir(command.split(" ",1)[1])
                 except FileNotFoundError:
-                    print(f"{command}: No such file or directory")
+                    print(f"{first_word}: command.split(" ",1)[1]: No such file or directory")
             case _:
                 found = False
                 for path in paths:
