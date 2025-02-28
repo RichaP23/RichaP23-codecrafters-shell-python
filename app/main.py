@@ -32,6 +32,9 @@ def main():
                 os.system(command)
             case "pwd":
                 os.system("pwd")
+            case "cd":
+                #with path : 
+                os.system(command)
             case _:
                 found = False
                 for path in paths:
