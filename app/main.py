@@ -22,21 +22,21 @@ def main():
             case "type":
                 subprocess.run("type "+command.split(" ",1)[1])
             case _:
-                            found = False
-            for path in paths:
-                executable_path = os.path.join(path, first_word)
-                if os.path.isfile(executable_path) and os.access(executable_path, os.X_OK):
-                    found = True
-                    try:
-                        result = subprocess.run([executable_path] + arguments, capture_output=True, text=True)
-                        print(result.stdout, end="")
-                        print(result.stderr, end="") #print stderr as well.
-                    except FileNotFoundError:
-                        print(f"{first_word}: command not found")
-                    break
-                else: 
-                    print(f"{command}: command not found")
-    
+                found = False
+                for path in paths:
+                    executable_path = os.path.join(path, first_word)
+                    if os.path.isfile(executable_path) and os.access(executable_path, os.X_OK):
+                        found = True
+                        try:
+                            result = subprocess.run([executable_path] + arguments, capture_output=True, text=True)
+                            print(result.stdout, end="")
+                            print(result.stderr, end="") #print stderr as well.
+                        except FileNotFoundError:
+                            print(f"{first_word}: command not found")
+                        break
+                    else: 
+                        print(f"{command}: command not found")
+        
         
 
 
