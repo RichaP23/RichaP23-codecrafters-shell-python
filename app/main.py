@@ -5,14 +5,19 @@ from pathlib import Path
 def quotedText(text):
     textList=[]
     word=""
+
     openQuote=False
     for i in text : 
         #this is the start quote
         if(i=="'" or i=='"' and openQuote==False):
             openQuote=True
+            quote=i
             continue
         #if quote is already opened : 
         elif(i=="'" or i=='"' and openQuote==True):
+            if(quote!=i):
+                word+=i
+                continue
             textList.append(word.strip())
             word=""
             openQuote=False
