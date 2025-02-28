@@ -50,7 +50,7 @@ def main():
                             os.chdir(os.pardir)
                             w=""
                         elif(w=="~"):
-                            os.chdir("/home/user")
+                            os.chdir("~")
                         else:
                             w+="c"
                             flag=True
