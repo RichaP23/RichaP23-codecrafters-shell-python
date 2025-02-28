@@ -42,7 +42,7 @@ def main():
         #checking for first word 
         match first_word:
             case "echo":
-                words=command.split(" ",1)[1]
+                words.copy(command.split(" ",1)[1])
                 if(words.startswith=="'" and words.endswith=="'"):
                     print(words)
             case "type":
