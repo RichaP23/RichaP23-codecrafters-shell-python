@@ -21,6 +21,7 @@ def main():
             case _:
                 #checking for env variable 
                 envCheckCommand="echo $"+first_word.upper()
+                print(envCheckCommand)
                 envCheck=os.system(envCheckCommand)
                 if(envCheck!=0):
                     os.system(command)
