@@ -51,7 +51,7 @@ def main():
                             w=""
                         elif(w=="~"):
                             a=find_command("home")
-                            os.chdir(a)
+                            os.system(a)
                         else:
                             w+="c"
                             flag=True
