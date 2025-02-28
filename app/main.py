@@ -40,8 +40,8 @@ def main():
                         found = True
                         try:
                             if(command.split(" ",1)[1].startswith("/tmp")):
-                                command.split(" ",1)[1]="custom_exe_8405"
-                            print(pathExecutable+" "+command.split(" ",1)[1])
+                                command=command.split(" ",1)[0]+" custom_exe_8405"
+                    
                             os.system(pathExecutable+" "+command.split(" ",1)[1])
                            
                         except FileNotFoundError:
