@@ -49,6 +49,8 @@ def main():
                         elif(w=="../"):
                             os.chdir(os.pardir)
                             w=""
+                        elif(w=="~"):
+                            os.chdir("/home/user")
                         else:
                             w+="c"
                             flag=True
