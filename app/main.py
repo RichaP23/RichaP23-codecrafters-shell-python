@@ -4,7 +4,7 @@ import subprocess
 from pathlib import Path
 def quotedText(text):
     textList=text.split("'")
-    textList=list(filter(lambda x:(x=="" or x==" "),textList))
+    textList = list(filter(lambda x: (x != "" and x != " "), textList))
     return textList
 def find_command(command):
     paths = os.environ.get('PATH') or ""    
@@ -38,7 +38,6 @@ def main():
                 os.system("pwd")
             case "cat":
                 words=quotedText(command.split(" ",1)[1])
-                print(words)
                 try: 
                     for files in words:
                         print(os.system(f"cat {files}"),endswith=" ")
