@@ -44,8 +44,7 @@ def main():
                         result = subprocess.run("cat" + files, capture_output=True, text=True)
                         print(result.stdout, end="")
                 except FileNotFoundError:
-                    print(f"{first_word}: {dir}: No such file or directory")
-
+                    print(f"{first_word}: {files}: No such file or directory")
             case "cd":
                 #with path : 
                 try: 
