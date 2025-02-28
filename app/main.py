@@ -1,7 +1,10 @@
 import sys
 import os
+import subprocess
 def main():
     while(True):
+        PATH=os.environ.get("PATH","")
+        paths=PATH.split(":")
         # Uncomment this block to pass the first stage
         sys.stdout.write("$ ")
         # Wait for user input
@@ -17,11 +20,20 @@ def main():
             case "echo":
                 print(f"{command.split(" ",1)[1]}")
             case "type":
-                os.system("type "+command.split(" ",1)[1])
+                subprocess.run("type "+command.split(" ",1)[1])
             case _:
-                #checking for env variable 
-                if(os.path.isfile(command.split(" ")[0])):
-                    os.system(command)
+                            found = False
+            for path in paths:
+                executable_path = os.path.join(path, first_word)
+                if os.path.isfile(executable_path) and os.access(executable_path, os.X_OK):
+                    found = True
+                    try:
+                        result = subprocess.run([executable_path] + arguments, capture_output=True, text=True)
+                        print(result.stdout, end="")
+                        print(result.stderr, end="") #print stderr as well.
+                    except FileNotFoundError:
+                        print(f"{first_word}: command not found")
+                    break
                 else: 
                     print(f"{command}: command not found")
     
