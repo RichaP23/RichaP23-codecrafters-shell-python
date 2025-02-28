@@ -35,13 +35,12 @@ def main():
                 for path in paths:
                     #and os.access(executable_path, os.X_OK)
                     executable_path = path+"/"+first_word
-                    if find_command(command.split(" ",1)[0]):
+                    pathExecutable=find_command(command.split(" ",1)[0])
+                    if pathExecutable:
                         found = True
                         try:
-                            result = subprocess.run("cd"+executable_path)
-                            resultFinal=subprocess.run("./"+command.split(" ",1)[1])
-                            print(resultFinal.stdout, end="")
-                            print(result.stderr, end="") #print stderr as well.
+                            os.system(pathExecutable+" "+command.split(" ",1)[1])
+                           
                         except FileNotFoundError:
                             print(f"{first_word}: command not found entering file check look but not finding path")
                         break
