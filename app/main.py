@@ -29,9 +29,9 @@ def main():
                     if os.path.isfile(executable_path):
                         found = True
                         try:
-                            result = subprocess.run(path+"/"+command)
-                            print(path+"/"+command)
-                            print(result.stdout, end="")
+                            result = subprocess.run(executable_path)
+                            resultFinal=subprocess.run(command.split(" ",1)[1])
+                            print(resultFinal.stdout, end="")
                             print(result.stderr, end="") #print stderr as well.
                         except FileNotFoundError:
                             print(f"{first_word}: command not found entering file check look but not finding path")
