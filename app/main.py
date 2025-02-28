@@ -24,8 +24,9 @@ def main():
             case _:
                 found = False
                 for path in paths:
+                    #and os.access(executable_path, os.X_OK)
                     executable_path = os.path.join(path, first_word)
-                    if os.path.isfile(executable_path) and os.access(executable_path, os.X_OK):
+                    if os.path.isfile(executable_path):
                         found = True
                         try:
                             result = subprocess.run([executable_path] + arguments, capture_output=True, text=True)
