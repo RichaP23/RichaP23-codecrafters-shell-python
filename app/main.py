@@ -59,8 +59,7 @@ def main():
                 words=quotedText(command.split(" ",1)[1])
                 try: 
                     for files in words:
-                        files="'"+files+"'"
-                        result = os.system("cat "+files)
+                        os.system(f"cat \"{files}\"")
                 except FileNotFoundError:
                     print(f"{first_word}: {files}: No such file or directory")
             case "cd":
