@@ -21,7 +21,7 @@ def quotedText(text):
                 word=""
                 openQuote=False
             else: 
-                word+=f"\\{i}"
+                word+="\\"+i
         else:
             word+=i
     print(textList)
