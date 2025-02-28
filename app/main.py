@@ -35,9 +35,28 @@ def main():
             case "cd":
                 #with path : 
                 try: 
-                    os.chdir(command.split(" ",1)[1])
+                    dir=command.split(" ",1)[1]
+                    w=""
+                    flag=False
+                    for ch in dir:
+                        w=""
+                        if(ch=="."):
+                            w+="."
+                            continue
+                        elif(w=="./"):
+                            w=""
+                            continue
+                        elif(w=="../"):
+                            os.chdir(os.pardir)
+                            w=""
+                        else:
+                            w+="c"
+                            flag=True
+                    if(flag):
+                        os.chdir(dir)
+                    flag=False
                 except FileNotFoundError:
-                    print(f"{first_word}: {command.split(" ",1)[1]}: No such file or directory")
+                    print(f"{first_word}: {dir}: No such file or directory")
             case _:
                 found = False
                 for path in paths:
