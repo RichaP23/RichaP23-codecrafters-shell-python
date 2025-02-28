@@ -51,6 +51,7 @@ def main():
                             w=""
                         elif(w=="~"):
                             os.system("cd $HOME")
+                            w=""
                         else:
                             w+="c"
                             flag=True
