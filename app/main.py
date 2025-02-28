@@ -39,11 +39,9 @@ def main():
                     if pathExecutable:
                         found = True
                         try:
-                            if(command.split(" ",1)[2].startswith("/tmp")):
-                                os.system(command)
-                            else:
-                                os.system(pathExecutable+" "+command.split(" ",1)[1])
-                           
+                            
+                            #os.system(pathExecutable+" "+command.split(" ",1)[1])
+                            os.system(command)
                         except FileNotFoundError:
                             print(f"{first_word}: command not found entering file check look but not finding path")
                         break
