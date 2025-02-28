@@ -20,10 +20,7 @@ def main():
                 os.system("type "+command.split(" ",1)[1])
             case _:
                 #checking for env variable 
-                envCheckCommand="echo $"+first_word.upper()
-                envCheck=os.system(envCheckCommand)
-                first_word.lower()
-                if(envCheck!=0):
+                if(os.path.isfile(command.split(" ")[0])):
                     os.system(command)
                 else: 
                     print(f"{command}: command not found")
