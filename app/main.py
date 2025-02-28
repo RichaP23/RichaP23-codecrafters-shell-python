@@ -50,8 +50,8 @@ def main():
                             os.chdir(os.pardir)
                             w=""
                         elif(w=="~"):
-                            home_dir = os.path.expanduser('~')
-                            os.chdir(home_dir)
+                            a=find_command("home")
+                            os.chdir(a)
                         else:
                             w+="c"
                             flag=True
