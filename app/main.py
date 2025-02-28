@@ -34,7 +34,10 @@ def main():
                 os.system("pwd")
             case "cd":
                 #with path : 
-                os.chdir(command.split(" ",1)[1])
+                try: 
+                    os.chdir(command.split(" ",1)[1])
+                except FileNotFoundError:
+                    print(f"{command}: No such file or directory")
             case _:
                 found = False
                 for path in paths:
