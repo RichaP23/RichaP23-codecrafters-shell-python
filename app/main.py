@@ -1,5 +1,6 @@
 import sys
 import os
+import regex
 import subprocess
 from pathlib import Path
 def quotedText(text):
@@ -21,9 +22,7 @@ def quotedText(text):
                 word=""
                 openQuote=False
             else: 
-                word+="\ "
-                word.strip()
-                word+=i
+                word=regex.sub(word,r"\\",i)
         else:
             word+=i
     print(textList)
