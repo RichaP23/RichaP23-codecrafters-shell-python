@@ -57,8 +57,9 @@ def main():
                             w+="c"
                             flag=True
                     if(flag):
+                        flag=False
                         os.chdir(dir)
-                    flag=False
+                    
                 except FileNotFoundError:
                     print(f"{first_word}: {dir}: No such file or directory")
             case _:
