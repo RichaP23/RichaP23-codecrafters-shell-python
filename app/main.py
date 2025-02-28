@@ -29,8 +29,8 @@ def main():
                     if os.path.isfile(executable_path):
                         found = True
                         try:
-                            result = subprocess.run(executable_path)
-                            resultFinal=subprocess.run(command.split(" ",1)[1])
+                            result = subprocess.run("cd"+executable_path)
+                            resultFinal=subprocess.run("./"+command.split(" ",1)[1])
                             print(resultFinal.stdout, end="")
                             print(result.stderr, end="") #print stderr as well.
                         except FileNotFoundError:
