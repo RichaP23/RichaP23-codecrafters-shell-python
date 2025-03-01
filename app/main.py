@@ -113,11 +113,17 @@ def main():
                             print(f"{first_word}: command not found")
                         break
                     elif(built_inPath!=f"{first_word} not found"):
-                        if(first_word.startswith("invalid")):
+                        '''if(first_word.startswith("invalid")):
                                 print(f"{command}: command not found")
                             #os.system(pathExecutable+" "+command.split(" ",1)[1])
                         else:
-                            os.system(command)
+                            os.system(command)'''
+                        textList,quote=quotedText(command)
+                        try:
+                            built_inPath=subprocess.run(textList,capture_output=True,text=True,check=True)
+                            print(built_inPath.stdout)
+                        except subprocess.CalledProcessError:
+                            print(f"{command}: command not found")
                         break
                     else: 
                         print(f"{command}: command not found")
