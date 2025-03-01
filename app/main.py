@@ -95,7 +95,6 @@ def main():
                     if(flag):
                         flag=False
                         os.chdir(dir)
-                    
                 except FileNotFoundError:
                     print(f"{first_word}: {dir}: No such file or directory")
             case _:
@@ -113,7 +112,7 @@ def main():
                         except FileNotFoundError:
                             print(f"{first_word}: command not found")
                         break
-                    elif(built_inPath!=f"{first_word} not found"):
+                    elif(built_inPath!=f"sh: {first_word}: not found"):
                         os.system(command)
                         break
                     else: 
