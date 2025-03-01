@@ -110,12 +110,15 @@ def main():
                         try:
                             #os.system(pathExecutable+" "+command.split(" ",1)[1])
                             os.system(command)
-                            print("I am not executed there")
                         except FileNotFoundError:
                             print(f"{first_word}: command not found")
                         break
                     elif(built_inPath!=f"{first_word} not found"):
-                        os.system(command)
+                        try:
+                            a=subprocess.run([command],capture_output=True,text=True,check=True)
+                            print(a.stdout)
+                        except subprocess.CalledProcessError:
+                            print(f"{command}: command not found")
                         break
                     else: 
                         print(f"{command}: command not found")
