@@ -3,7 +3,8 @@ import os
 built_inPath=subprocess.run(["which","coco"],capture_output=True,text=True,shell=True)
 print(built_inPath.returncode)
 print("return code above")
-print(built_inPath.stdout)
+a=built_inPath.stdout
+print(a)
 print("stdout above")
 print(built_inPath.stderr)
 print("std err above")
