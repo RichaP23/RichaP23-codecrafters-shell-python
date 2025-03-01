@@ -17,6 +17,7 @@ def quotedText(text):
         elif((i=="'" or i=='"') and openQuote==True):
             if(i==quote):
                 textList.append(word.strip())
+                lastquote=quote
                 quote=""
                 word=""
                 openQuote=False
@@ -25,7 +26,7 @@ def quotedText(text):
                 word +=i  # Add backslash before the quote
         else:
             word+=i
-    return textList
+    return textList,lastquote
 def find_command(command):
     paths = os.environ.get('PATH') or ""    
     for path in map(lambda s: f"{s}/{command}", paths.split(":")):
@@ -57,10 +58,13 @@ def main():
             case "pwd":
                 os.system("pwd")
             case "cat":
-                words=quotedText(command.split(" ",1)[1])
+                words,quote=quotedText(command.split(" ",1)[1])
                 try: 
                     for files in words:
-                        os.system(f"cat \"{files}\"")
+                        if(quote=='"'):
+                            os.system(f"cat \"{files}\"")
+                        else:
+                            os.system(f"cat \'{files}\'")
                 except FileNotFoundError:
                     print(f"{first_word}: {files}: No such file or directory")
             case "cd":
