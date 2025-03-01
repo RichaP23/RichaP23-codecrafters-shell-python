@@ -99,8 +99,8 @@ def main():
                     print(f"{first_word}: {dir}: No such file or directory")
             case _:
                 found = False
-                #built_inPath=subprocess.run(["which",first_word],capture_output=True,text=True,shell=True)
-                pathFound=os.system(f"which {first_word[1:-1]}")
+                built_inPath=subprocess.run(["which",first_word],capture_output=True,text=True,shell=True)
+                #pathFound=os.system(f"which {first_word[1:-1]}")
                 #print(built_inPath.returncode)
                 for path in paths:
                     #and os.access(executable_path, os.X_OK)
@@ -115,7 +115,7 @@ def main():
                             print(f"{first_word}: command not found")
                         break
                     #len(built_inPath.split(" "))==1
-                    elif pathFound==0:
+                    elif len(built_inPath.split(" "))==1:
                         try:
                             os.system(command)
                         except FileNotFoundError:
