@@ -20,6 +20,7 @@ def quotedText(text):
                 quote=""
                 word=""
                 openQuote=False
+                continue
             else: 
                 word +=i  # Add backslash before the quote
         else:
