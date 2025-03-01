@@ -113,7 +113,7 @@ def main():
                         except FileNotFoundError:
                             print(f"{first_word}: command not found")
                         break
-                    elif(built_inPath.returncode == 1):
+                    elif(len(built_inPath.split(" "))==1):
                         try:
                             os.system(command)
                         except FileNotFoundError:
