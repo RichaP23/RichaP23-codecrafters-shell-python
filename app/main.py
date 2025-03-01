@@ -108,16 +108,16 @@ def main():
                     if pathExecutable:
                         found = True
                         try:
-                            if(command.beginswith("invalid")):
-                                print(f"{command}: command not found")
-                            #os.system(pathExecutable+" "+command.split(" ",1)[1])
-                            else:
-                                os.system(command)
+                            os.system(command)
                         except FileNotFoundError:
                             print(f"{first_word}: command not found")
                         break
                     elif(built_inPath!=f"{first_word} not found"):
-                        os.system(command)
+                        if(first_word.beginswith("invalid")):
+                                print(f"{command}: command not found")
+                            #os.system(pathExecutable+" "+command.split(" ",1)[1])
+                        else:
+                            os.system(command)
                         break
                     else: 
                         print(f"{command}: command not found")
