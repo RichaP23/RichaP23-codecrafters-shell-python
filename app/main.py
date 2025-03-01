@@ -21,7 +21,7 @@ def quotedText(text):
                 word=""
                 openQuote=False
             else: 
-                word += "\\" + i  # Add backslash before the quote
+                word +=i  # Add backslash before the quote
         else:
             word+=i
     return textList
