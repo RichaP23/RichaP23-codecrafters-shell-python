@@ -100,25 +100,21 @@ def main():
                     print(f"{first_word}: {dir}: No such file or directory")
             case _:
                 found = False
-                built_inPath=subprocess.run(["which",first_word],capture_output=True,text=True)
                 for path in paths:
-                    #and os.access(executable_path, os.X_OK)
-                    executable_path = path+"/"+first_word
-                    pathExecutable=find_command(command.split(" ",1)[0])
-                    if pathExecutable:
+                    executable_path = os.path.join(path, first_word)
+                    if os.path.isfile(executable_path) and os.access(executable_path, os.X_OK):
                         found = True
                         try:
-                            #os.system(pathExecutable+" "+command.split(" ",1)[1])
-                            os.system(command)
-                        except FileNotFoundError:
-                            print(f"{first_word}: command not found")
+                            # Execute the command with arguments
+                            subprocess.run([executable_path] + command.split(" ")[1:], check=True)
+                        except subprocess.CalledProcessError as e:
+                            # Handle command execution errors (e.g., command failed but was found)
+                            print(f"{command}: command not found")
                         break
-                    elif(built_inPath!=f"{first_word} not found"):
-                        os.system(command)
-                        break
-                    else: 
-                        print(f"{command}: command not found")
-                        break
+
+                if not found:
+                    # Command not found, print the required error message
+                    print(f"{command}: command not found")
         
         
 
