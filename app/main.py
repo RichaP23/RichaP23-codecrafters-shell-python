@@ -115,6 +115,7 @@ def main():
                         break
                     elif(built_inPath!=f"{first_word} not found"):
                         os.system(command)
+                        break
                     else: 
                         print(f"{command}: command not found")
                         break
