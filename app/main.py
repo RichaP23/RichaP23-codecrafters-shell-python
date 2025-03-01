@@ -100,6 +100,7 @@ def main():
             case _:
                 found = False
                 built_inPath=subprocess.run(["which",first_word],capture_output=True,text=True)
+                print(built_inPath.returncode)
                 for path in paths:
                     #and os.access(executable_path, os.X_OK)
                     executable_path = path+"/"+first_word
