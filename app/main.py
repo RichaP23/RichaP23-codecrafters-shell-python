@@ -115,7 +115,7 @@ def main():
                         break
                     elif(built_inPath!=f"{first_word} not found"):
                         try:
-                            a=subprocess.run([command],capture_output=True,text=True,check=True)
+                            a=subprocess.run(command,capture_output=True,text=True,check=True)
                             print(a.stdout)
                         except subprocess.CalledProcessError:
                             print(f"{command}: command not found")
