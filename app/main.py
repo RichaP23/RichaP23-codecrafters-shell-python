@@ -100,7 +100,7 @@ def main():
             case _:
                 found = False
                 #built_inPath=subprocess.run(["which",first_word],capture_output=True,text=True,shell=True)
-                pathFound=os.system(f"which \"{first_word}\"")
+                pathFound=os.system(f"which {first_word[1:-1]}")
                 #print(built_inPath.returncode)
                 for path in paths:
                     #and os.access(executable_path, os.X_OK)
