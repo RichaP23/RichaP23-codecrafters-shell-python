@@ -99,31 +99,34 @@ def main():
                     print(f"{first_word}: {dir}: No such file or directory")
             case _:
                 found = False
-                built_inPath=subprocess.run(["which",first_word],capture_output=True,text=True,check=True)
-                #pathFound=os.system(f"which {first_word[1:-1]}")
-                #print(built_inPath.returncode)
-                for path in paths:
-                    #and os.access(executable_path, os.X_OK)
-                    executable_path = path+"/"+first_word
-                    pathExecutable=find_command(command.split(" ",1)[0])
-                    if pathExecutable:
-                        found = True
-                        try:
-                            #os.system(pathExecutable+" "+command.split(" ",1)[1])
-                            os.system(command)
-                        except FileNotFoundError:
-                            print(f"{first_word}: command not found")
-                        break
-                    #len(built_inPath.split(" "))==1
-                    elif built_inPath.returncode==0:
-                        try:
-                            os.system(command) 
-                        except FileNotFoundError:
-                            print(f"{first_word}: command not found")
-                        break
-                    else: 
-                        print(f"{command}: command not found")
-                        break
+                try:
+                    built_inPath=subprocess.run(["which",first_word],capture_output=True,text=True,check=True)
+                    #pathFound=os.system(f"which {first_word[1:-1]}")
+                    #print(built_inPath.returncode)
+                    for path in paths:
+                        #and os.access(executable_path, os.X_OK)
+                        executable_path = path+"/"+first_word
+                        pathExecutable=find_command(command.split(" ",1)[0])
+                        if pathExecutable:
+                            found = True
+                            try:
+                                #os.system(pathExecutable+" "+command.split(" ",1)[1])
+                                os.system(command)
+                            except FileNotFoundError:
+                                print(f"{first_word}: command not found")
+                            break
+                        #len(built_inPath.split(" "))==1
+                        elif built_inPath.returncode==0:
+                            try:
+                                os.system(command) 
+                            except FileNotFoundError:
+                                print(f"{first_word}: command not found")
+                            break
+                        else: 
+                            print(f"{command}: command not found")
+                            break
+                except subprocess.CalledProcessError:
+                    print(f"{command}: command not found")
         
         
 
