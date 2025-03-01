@@ -113,7 +113,7 @@ def main():
                             print(f"{first_word}: command not found")
                         break
                     elif(built_inPath!=f"{first_word} not found"):
-                        if(first_word.beginswith("invalid")):
+                        if(first_word.startswith("invalid")):
                                 print(f"{command}: command not found")
                             #os.system(pathExecutable+" "+command.split(" ",1)[1])
                         else:
