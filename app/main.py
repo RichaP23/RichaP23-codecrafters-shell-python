@@ -99,7 +99,7 @@ def main():
                     print(f"{first_word}: {dir}: No such file or directory")
             case _:
                 found = False
-                built_inPath=subprocess.run(["which",first_word],capture_output=True,text=True)
+                built_inPath=subprocess.run(["which",first_word],capture_output=True,text=True,shell=True)
                 #print(built_inPath.returncode)
                 for path in paths:
                     #and os.access(executable_path, os.X_OK)
