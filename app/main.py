@@ -100,6 +100,7 @@ def main():
             case _:
                 found = False
                 built_inPath=subprocess.run(["which",first_word],capture_output=True,text=True)
+                built_inPathCheck=os.system(f"which {first_word}")
                 for path in paths:
                     #and os.access(executable_path, os.X_OK)
                     executable_path = path+"/"+first_word
@@ -112,7 +113,7 @@ def main():
                         except FileNotFoundError:
                             print(f"{first_word}: command not found")
                         break
-                    elif(built_inPath!=f"sh: {first_word}: not found"):
+                    elif(built_inPathCheck!=1):
                         os.system(command)
                         break
                     else: 
