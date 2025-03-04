@@ -14,6 +14,7 @@ def redirectToFile(command,cout):
         try:
             file=command.split(">")[1]
             fptr=fopen(file,"w")
+            print(cout.stdout)
             file.write(cout.stdout)
         except IndexError:
             print(cout.stdout)
