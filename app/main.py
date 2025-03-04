@@ -2,24 +2,7 @@ import sys
 import os
 import subprocess
 from pathlib import Path
-def checkRedirect(command):
-    try:
-        if((">" in command) or ("1>" in command)):
-            return True
-    except IndexError:
-        return False
-    return False
-def redirectToFile(command,cout):
-    if(checkRedirect(command)):
-        try:
-            file=command.split(">")[1]
-            fptr=fopen(file,"w")
-            print(cout.stdout)
-            file.write(cout.stdout)
-        except IndexError:
-            print(cout.stdout)
-    else:
-        print(cout.stdout)
+
 def quotedText(text):
     textList=[]
     word=""
@@ -72,13 +55,13 @@ def main():
         match first_word:
             case "echo":
                 cout=subprocess.run([command],capture_output=True,text=True)
-                redirectToFile(command,cout)
+                print(cout.stdout)
             case "type":
                 cout=subprocess.run([command],capture_output=True,text=True)
-                redirectToFile(command,cout)
+                print(cout.stdout)
             case "pwd":
                 cout=subprocess.run(["pwd"],capture_output=True,text=True)
-                redirectToFile(command,cout)
+                print(cout.stdout)
             case "cat":
                 words,quote=quotedText(command.split(" ",1)[1])
                 try: 
@@ -87,7 +70,7 @@ def main():
                             cout=subprocess.run(["cat",f"\"{files}\""],capture_output=True,text=True)
                         else:
                             cout=subprocess.run(["cat",f"\"{files}\""],capture_output=True,text=True)
-                        redirectToFile(command,cout)
+                        print(cout.stdout)
                         
                 except FileNotFoundError:
                     print(f"{first_word}: {files}: No such file or directory")
