@@ -5,7 +5,7 @@ from pathlib import Path
 def quotedText(text):
     textList=[]
     word=""
-
+    lastquote=""
     openQuote=False
     for i in text : 
         #this is the start quote
