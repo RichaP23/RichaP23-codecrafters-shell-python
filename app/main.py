@@ -67,10 +67,10 @@ def main():
                 try: 
                     for files in words:
                         if(quote=='"'):
-                            cout=subprocess.run(["cat",f"\"{files}\""],capture_output=True,text=True)
+                            os.system("cat"+f"\"{files}\"")
                         else:
-                            cout=subprocess.run(["cat",f"\'{files}\'"],capture_output=True,text=True)
-                        print(cout.stdout)
+                            os.system("cat"+f"\'{files}\'")
+                        
                         
                 except FileNotFoundError:
                     print(f"{first_word}: {files}: No such file or directory")
