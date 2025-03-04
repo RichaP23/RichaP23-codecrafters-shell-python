@@ -4,14 +4,12 @@ import subprocess
 
 def execute_command(command):
     """ Execute the command and handle output redirection properly. """
-    if '>' in command:
+    if '1>' in command : 
+        output_file = output_file[2:].strip()
+    elif '>' in command:
         parts = command.split(">", 1)
         cmd_part = parts[0].strip()
         output_file = parts[1].strip()
-
-        # Remove '1>' explicitly if present
-        if output_file.startswith("1>"):
-            output_file = output_file[2:].strip()
 
         try:
             # Execute command and capture output
