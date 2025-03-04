@@ -35,4 +35,12 @@ def main():
         sys.stdout.write("$ ")  # Prompt before taking input
         sys.stdout.flush()  # Ensure it appears immediately
         
-        command = 
+        command = input().strip()  # Read user input
+
+        if command == "exit 0":
+            exit(0)
+        
+        execute_command(command)  # Handle both normal and redirected commands
+
+if __name__ == "__main__":
+    main()
