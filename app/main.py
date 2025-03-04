@@ -5,6 +5,8 @@ import subprocess
 def execute_command(command):
     """ Execute the command and handle output redirection properly. """
     if '1>' in command : 
+        parts = command.split("1>", 1)
+        cmd_part = parts[0].strip()
         output_file = output_file[2:].strip()
     elif '>' in command:
         parts = command.split(">", 1)
