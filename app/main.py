@@ -10,12 +10,8 @@ def find_command(command):
         if executable_path.exists() and os.access(executable_path, os.X_OK):
             return str(executable_path)
     return None
-
 def execute_command(command):
-    if "1>" in command: 
-        parts=command.split(" 1>",1)
-    else: 
-        parts = command.split(" >", 1)
+    parts = command.split(">", 1)
     if len(parts) > 1:
         cmd_part = parts[0].strip()
         output_file = parts[1].strip()
@@ -29,7 +25,7 @@ def execute_command(command):
                 # Special handling for echo
                 output = " ".join(args)
                 with open(output_file, "w") as f:
-                    f.write(output)
+                    f.write(output.strip()) #strip the output
                 return True
 
             cmd_path = find_command(cmd)
