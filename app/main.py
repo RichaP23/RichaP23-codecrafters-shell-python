@@ -28,6 +28,7 @@ def quotedText(text):
         if((i=="'" or i=='"') and openQuote==False):
             openQuote=True
             quote=i
+            lastquote=""
             continue
         #if quote is already opened : 
         elif((i=="'" or i=='"') and openQuote==True):
@@ -42,6 +43,7 @@ def quotedText(text):
                 word +=i  # Add backslash before the quote
         else:
             word+=i
+            lastquote=""
     return textList,lastquote
 def find_command(command):
     paths = os.environ.get('PATH') or ""    
