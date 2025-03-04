@@ -21,6 +21,14 @@ def execute_command(command):
         if cmd_parts:
             cmd = cmd_parts[0]
             args = cmd_parts[1:]
+
+            if cmd == "echo":
+                # Special handling for echo
+                output = " ".join(args)
+                with open(output_file, "w") as f:
+                    f.write(output)
+                return True
+
             cmd_path = find_command(cmd)
             if cmd_path:
                 try:
