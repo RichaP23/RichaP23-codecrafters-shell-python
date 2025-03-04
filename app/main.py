@@ -69,7 +69,7 @@ def main():
                         if(quote=='"'):
                             cout=subprocess.run(["cat",f"\"{files}\""],capture_output=True,text=True)
                         else:
-                            cout=subprocess.run(["cat",f"\"{files}\""],capture_output=True,text=True)
+                            cout=subprocess.run(["cat",f"\'{files}\'"],capture_output=True,text=True)
                         print(cout.stdout)
                         
                 except FileNotFoundError:
