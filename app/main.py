@@ -54,14 +54,11 @@ def main():
         #checking for first word 
         match first_word:
             case "echo":
-                cout=subprocess.run([command],capture_output=True,text=True)
-                print(cout.stdout)
+                os.system(command)
             case "type":
-                cout=subprocess.run([command],capture_output=True,text=True)
-                print(cout.stdout)
+                os.system(command)
             case "pwd":
-                cout=subprocess.run(["pwd"],capture_output=True,text=True)
-                print(cout.stdout)
+                os.system("pwd")
             case "cat":
                 words,quote=quotedText(command.split(" ",1)[1])
                 try: 
