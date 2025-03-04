@@ -2,10 +2,26 @@ import sys
 import os
 import subprocess
 from pathlib import Path
+def checkRedirect(command):
+    try:
+        if(command.split(" ")[2]==">" or command.split(" ")[2]=="1>"):
+            return True
+    except IndexError:
+        return False
+    return False
+def redirectToFile(command,cout):
+    if(checkRedirect(command)):
+        try:
+            file=command.split(" ")[3]
+            fptr=fopen(file,"w")
+            file.write(cout.stdout)
+        except IndexError:
+            print(cout.stdout)
+    else:
+        print(cout.stdout)
 def quotedText(text):
     textList=[]
     word=""
-
     openQuote=False
     for i in text : 
         #this is the start quote
@@ -52,19 +68,24 @@ def main():
         #checking for first word 
         match first_word:
             case "echo":
-                os.system(command)
+                cout=subprocess.run([command],capture_output=True,text=True)
+                redirectToFile(command,cout)
             case "type":
-                os.system(command)
+                cout=subprocess.run([command],capture_output=True,text=True)
+                redirectToFile(command,cout)
             case "pwd":
-                os.system("pwd")
+                cout=subprocess.run(["pwd"],capture_output=True,text=True)
+                redirectToFile(command,cout)
             case "cat":
                 words,quote=quotedText(command.split(" ",1)[1])
                 try: 
                     for files in words:
                         if(quote=='"'):
-                            os.system(f"cat \"{files}\"")
+                            cout=subprocess.run(["cat",f"\"{files}\""],capture_output=True,text=True)
                         else:
-                            os.system(f"cat \'{files}\'")
+                            cout=subprocess.run(["cat",f"\"{files}\""],capture_output=True,text=True)
+                        redirectToFile(command,cout)
+                        
                 except FileNotFoundError:
                     print(f"{first_word}: {files}: No such file or directory")
             case "cd":
