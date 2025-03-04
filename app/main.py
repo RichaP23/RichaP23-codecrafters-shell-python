@@ -17,9 +17,9 @@ def execute_command(command):
             # Execute command and capture output
             result = subprocess.run(cmd_part, shell=True, capture_output=True, text=True)
             
-            # Write only stdout to the file, without extra numbers
+            # Write only stdout to the file without extra characters
             with open(output_file, "w") as f:
-                f.write(result.stdout.rstrip())  # Use rstrip() to avoid extra newlines or spaces
+                f.write(result.stdout.rstrip() + "\n")  # Ensure proper newline formatting
 
             # Print errors (stderr) to console if any
             if result.stderr:
@@ -32,13 +32,7 @@ def execute_command(command):
 
 def main():
     while True:
-        sys.stdout.write("$ ")
-        command = input().strip()
-
-        if command == "exit 0":
-            exit(0)
+        sys.stdout.write("$ ")  # Prompt before taking input
+        sys.stdout.flush()  # Ensure it appears immediately
         
-        execute_command(command)  # Handle both normal and redirected commands
-
-if __name__ == "__main__":
-    main()
+        command = 
