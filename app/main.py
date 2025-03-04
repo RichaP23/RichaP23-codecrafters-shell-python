@@ -4,7 +4,7 @@ import subprocess
 from pathlib import Path
 def checkRedirect(command):
     try:
-        if(command.split(" ")[2]==">" or command.split(" ")[2]=="1>"):
+        if((">" in command) or ("1>" in command)):
             return True
     except IndexError:
         return False
@@ -12,7 +12,7 @@ def checkRedirect(command):
 def redirectToFile(command,cout):
     if(checkRedirect(command)):
         try:
-            file=command.split(" ")[3]
+            file=command.split(">")[1]
             fptr=fopen(file,"w")
             file.write(cout.stdout)
         except IndexError:
