@@ -12,7 +12,10 @@ def find_command(command):
     return None
 
 def execute_command(command):
-    parts = command.split(">", 1)
+    if "1>" in command: 
+        parts=command.split(" 1>",1)
+    else: 
+        parts = command.split(" >", 1)
     if len(parts) > 1:
         cmd_part = parts[0].strip()
         output_file = parts[1].strip()
