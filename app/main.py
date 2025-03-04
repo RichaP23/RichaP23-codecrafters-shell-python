@@ -2,17 +2,16 @@ import sys
 import os
 import subprocess
 from pathlib import Path
-
 def quotedText(text):
     textList=[]
     word=""
+
     openQuote=False
     for i in text : 
         #this is the start quote
         if((i=="'" or i=='"') and openQuote==False):
             openQuote=True
             quote=i
-            lastquote=""
             continue
         #if quote is already opened : 
         elif((i=="'" or i=='"') and openQuote==True):
@@ -27,7 +26,6 @@ def quotedText(text):
                 word +=i  # Add backslash before the quote
         else:
             word+=i
-            lastquote=""
     return textList,lastquote
 def find_command(command):
     paths = os.environ.get('PATH') or ""    
@@ -64,11 +62,9 @@ def main():
                 try: 
                     for files in words:
                         if(quote=='"'):
-                            os.system("cat"+f"\"{files}\"")
+                            os.system(f"cat \"{files}\"")
                         else:
-                            os.system("cat"+f"\'{files}\'")
-                        
-                        
+                            os.system(f"cat \'{files}\'")
                 except FileNotFoundError:
                     print(f"{first_word}: {files}: No such file or directory")
             case "cd":
