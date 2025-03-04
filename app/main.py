@@ -12,60 +12,51 @@ def find_command(command):
     return None
 
 def execute_command(command):
-    parts = command.split(" ", 1)
-    if len(parts) > 0:
-        cmd_part = parts[0]
-        if len(parts) > 1:
-            rest = parts[1]
-            redirect_parts = rest.split(">", 1)
-            if len(redirect_parts) > 1:
-                command_args, output_file = redirect_parts
-                output_file = output_file.strip()
-                command_args = command_args.strip()
-                cmd_path = find_command(cmd_part)
-                if cmd_path:
-                    try:
-                        result = subprocess.run([cmd_path] + command_args.split(), capture_output=True, text=True, check=False)
-                        with open(output_file, "w") as f:
-                            f.write(result.stdout)
-                        if result.stderr:
-                            sys.stderr.write(result.stderr)
-                    except FileNotFoundError:
-                        print(f"{cmd_part}: command not found")
-                    except Exception as e:
-                        print(f"Error: {e}")
-                    return True
-                else:
-                    print(f"{cmd_part}: command not found")
-                    return True
+    parts = command.split(">", 1)
+    if len(parts) > 1:
+        cmd_part = parts[0].strip()
+        output_file = parts[1].strip()
 
-            else:
-                cmd_path = find_command(cmd_part)
-                if cmd_path:
-                    try:
-                        subprocess.run([cmd_path] + redirect_parts[0].split(), check=False)
-                        return True
-                    except FileNotFoundError:
-                        print(f"{cmd_part}: command not found")
-                    except Exception as e:
-                        print(f"Error: {e}")
-                    return True
-                else:
-                    print(f"{cmd_part}: command not found")
-                    return True
-        else:
-            cmd_path = find_command(cmd_part)
+        cmd_parts = cmd_part.split()
+        if cmd_parts:
+            cmd = cmd_parts[0]
+            args = cmd_parts[1:]
+            cmd_path = find_command(cmd)
             if cmd_path:
                 try:
-                    subprocess.run([cmd_path], check=False)
-                    return True
+                    result = subprocess.run([cmd_path] + args, capture_output=True, text=True, check=False)
+                    with open(output_file, "w") as f:
+                        f.write(result.stdout)
+                    if result.stderr:
+                        sys.stderr.write(result.stderr)
                 except FileNotFoundError:
-                    print(f"{cmd_part}: command not found")
+                    print(f"{cmd}: command not found")
                 except Exception as e:
                     print(f"Error: {e}")
-                else:
-                    print(f"{cmd_part}: command not found")
+                return True
+            else:
+                print(f"{cmd}: command not found")
+                return True
+    else:
+        cmd_parts = command.split()
+        if cmd_parts:
+            cmd = cmd_parts[0]
+            args = cmd_parts[1:]
+            cmd_path = find_command(cmd)
+            if cmd_path:
+                try:
+                    subprocess.run([cmd_path] + args, check=False)
                     return True
+                except FileNotFoundError:
+                    print(f"{cmd}: command not found")
+                except Exception as e:
+                    print(f"Error: {e}")
+                return True
+            else:
+                print(f"{cmd}: command not found")
+                return True
+        else:
+            return True
 
 def main():
     while True:
