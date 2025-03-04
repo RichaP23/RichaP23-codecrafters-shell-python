@@ -1,1 +1,9 @@
-rose
+total 40
+-rw-r--r--  1 pragyaricha  staff   269 Feb 28 02:16 Pipfile
+-rw-r--r--  1 pragyaricha  staff   451 Feb 28 02:16 Pipfile.lock
+-rw-r--r--  1 pragyaricha  staff  1367 Feb 28 02:16 README.md
+drwxr-xr-x  5 pragyaricha  staff   160 Mar  1 21:20 app
+-rw-r--r--  1 pragyaricha  staff   294 Feb 28 02:16 codecrafters.yml
+-rw-r--r--  1 pragyaricha  staff     0 Mar  1 01:56 master
+-rw-r--r--  1 pragyaricha  staff     0 Mar  4 17:30 rose
+-rwxr-xr-x  1 pragyaricha  staff   449 Feb 28 02:16 your_program.sh

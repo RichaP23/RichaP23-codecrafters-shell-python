@@ -2,139 +2,86 @@ import sys
 import os
 import subprocess
 from pathlib import Path
+
 def quotedText(text):
-    textList=[]
-    word=""
-    lastquote=""
-    openQuote=False
-    for i in text : 
-        #this is the start quote
-        if((i=="'" or i=='"') and openQuote==False):
-            openQuote=True
-            quote=i
+    textList = []
+    word = ""
+    lastquote = ""
+    openQuote = False
+    for i in text:
+        if (i == "'" or i == '"') and openQuote == False:
+            openQuote = True
+            quote = i
             continue
-        #if quote is already opened : 
-        elif((i=="'" or i=='"') and openQuote==True):
-            if(i==quote):
+        elif (i == "'" or i == '"') and openQuote == True:
+            if i == quote:
                 textList.append(word.strip())
-                lastquote=quote
-                quote=""
-                word=""
-                openQuote=False
+                lastquote = quote
+                quote = ""
+                word = ""
+                openQuote = False
                 continue
-            else: 
-                word +=i  # Add backslash before the quote
+            else:
+                word += i
         else:
-            word+=i
-    return textList,lastquote
+            word += i
+    return textList, lastquote
+
 def find_command(command):
-    paths = os.environ.get('PATH') or ""    
+    paths = os.environ.get('PATH') or ""
     for path in map(lambda s: f"{s}/{command}", paths.split(":")):
         if Path(path).exists():
             return path
-                    
     return None
 
+def execute_command(command):
+    parts = command.split(" ", 1)
+    if len(parts) > 1:
+        cmd, rest = parts
+        redirect_parts = rest.split(">", 1)
+        if len(redirect_parts) > 1:
+            command_args, output_file = redirect_parts
+            output_file = output_file.strip()
+            command_args = command_args.strip()
+            try:
+                result = subprocess.run(command_args.split(), capture_output=True, text=True, check=False)
+                with open(output_file, "w") as f:
+                    f.write(result.stdout)
+                if result.stderr:
+                    sys.stderr.write(result.stderr)
+
+            except FileNotFoundError:
+                print(f"{cmd}: command not found")
+            except Exception as e:
+                print(f"Error: {e}")
+            return True
+        else:
+            try:
+                subprocess.run(command.split(), check=False)
+                return True
+            except FileNotFoundError:
+                print(f"{cmd}: command not found")
+            except Exception as e:
+                print(f"Error: {e}")
+            return True
+
+    else:
+        try:
+            subprocess.run(command.split(), check=False)
+            return True
+        except FileNotFoundError:
+            print(f"{command}: command not found")
+        except Exception as e:
+            print(f"Error: {e}")
+        return True
+
 def main():
-    while(True):
-        PATH=os.environ.get("PATH","")
-        paths=PATH.split(":")
-        # Uncomment this block to pass the first stage
+    while True:
         sys.stdout.write("$ ")
-        # Wait for user input
-        command=input()
-        built_in={"exit","echo","type"}
-        #checking for exit input by user
-        if(command=="exit 0"):
+        command = input()
+        if command == "exit 0":
             exit(0)
-        #getting the first word usually command
-        first_word=command.split(" ",1)[0]
-        #checking for first word 
-        match first_word:
-            case "echo":
-                os.system(command)
-            case "type":
-                os.system(command)
-            case "pwd":
-                os.system("pwd")
-            case "ls":
-                os.system(command)
-            case "cat":
-                words,quote=quotedText(command.split(" ",1)[1])
-                try: 
-                    for files in words:
-                        if(quote=="'"):
-                            os.system(f"cat \'{files}\'")
-                        else:
-                            os.system(f"cat \"{files}\"")
-                except FileNotFoundError:
-                    print(f"{first_word}: {files}: No such file or directory")
-            case "cd":
-                #with path : 
-                try: 
-                    dir=command.split(" ",1)[1]
-                    w=""
-                    flag=False
-                    for ch in dir:
-                        w=""
-                        if(ch=="."):
-                            w+="."
-                            continue
-                        elif(w=="./"):
-                            w=""
-                            continue
-                        elif(w=="../"):
-                            os.chdir(os.pardir)
-                            w=""
-                        elif(ch=="~"):
-                            #os.system("cd $HOME")
-                            home=os.getenv("HOME")
-                            os.chdir(home)
-                            w=""
-                        else:
-                            w+="c"
-                            flag=True
-                    if(flag):
-                        flag=False
-                        os.chdir(dir)
-                    
-                except FileNotFoundError:
-                    print(f"{first_word}: {dir}: No such file or directory")
-            case _:
-                found = False
-                built_inPath=subprocess.run(["which",first_word],capture_output=True,text=True)
-                for path in paths:
-                    #and os.access(executable_path, os.X_OK)
-                    executable_path = path+"/"+first_word
-                    pathExecutable=find_command(command.split(" ",1)[0])
-                    if pathExecutable:
-                        found = True
-                        try:
-                            os.system(command)
-                        except FileNotFoundError:
-                            print(f"{first_word}: command not found")
-                        break
-                    elif(built_inPath!=f"{first_word} not found"):
-                        if(first_word.startswith("invalid")):
-                                print(f"{command}: command not found")
-                            #os.system(pathExecutable+" "+command.split(" ",1)[1])
-                        else:
-                            os.system(command)
-                        '''textList,quote=quotedText(command)
-                        try:
-                            built_inPath=subprocess.run(textList,capture_output=True,text=True,check=True)
-                            print(built_inPath.stdout)
-                        except subprocess.CalledProcessError:
-                            print(f"{command}: command not found")
-                        break'''
-                    else: 
-                        print(f"{command}: command not found")
-                        break
-
-        
-        
-
-
+        execute_command(command)
 
 if __name__ == "__main__":
     main()
