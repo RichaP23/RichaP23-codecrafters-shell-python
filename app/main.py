@@ -57,6 +57,8 @@ def main():
                 os.system(command)
             case "pwd":
                 os.system("pwd")
+            case "ls":
+                os.system(command)
             case "cat":
                 words,quote=quotedText(command.split(" ",1)[1])
                 try: 
