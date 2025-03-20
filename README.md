@@ -1,34 +1,29 @@
-[![progress-banner](https://backend.codecrafters.io/progress/shell/3cdda5b3-0be2-4c16-980d-10b4c613b31c)](https://app.codecrafters.io/users/codecrafters-bot?r=2qF)
+# 🐚 Codecrafters Shell - Python
 
-This is a starting point for Python solutions to the
-["Build Your Own Shell" Challenge](https://app.codecrafters.io/courses/shell/overview).
+This project is part of the **Codecrafters Shell Challenge**, where the goal is to implement a mini UNIX shell from scratch using Python.
 
-In this challenge, you'll build your own POSIX compliant shell that's capable of
-interpreting shell commands, running external programs and builtin commands like
-cd, pwd, echo and more. Along the way, you'll learn about shell command parsing,
-REPLs, builtin commands, and more.
+## 💡 What This Project Covers
+- Building a CLI shell in Python
+- Command parsing and tokenization
+- Process creation and execution using `subprocess` and `os` modules
+- Handling built-in commands like `cd`, `exit`, etc.
 
-**Note**: If you're viewing this repo on GitHub, head over to
-[codecrafters.io](https://codecrafters.io) to try the challenge.
+## 🔧 How to Run
+1. Clone the repo:
+git clone https://github.com/RichaP23/RichaP23-codecrafters-shell-python cd RichaP23-codecrafters-shell-python
+2. Run the shell:
+python3 shell.py
 
-# Passing the first stage
+## 📂 Project Structure
+shell.py
+tests/
 
-The entry point for your `shell` implementation is in `app/main.py`. Study and
-uncomment the relevant code, and push your changes to pass the first stage:
+## 🧠 Key Learnings
+- Hands-on understanding of how shells work under the hood
+- Improved knowledge of I/O streams, process management, and error handling
 
-```sh
-git commit -am "pass 1st stage" # any msg
-git push origin master
-```
+## 🚀 Future Enhancements
+- Support for piping and redirection
+- Command history and autocompletion
+- Signal handling (e.g., Ctrl+C, Ctrl+Z)
 
-Time to move on to the next stage!
-
-# Stage 2 & beyond
-
-Note: This section is for stages 2 and beyond.
-
-1. Ensure you have `python (3.11)` installed locally
-1. Run `./your_program.sh` to run your program, which is implemented in
-   `app/main.py`.
-1. Commit your changes and run `git push origin master` to submit your solution
-   to CodeCrafters. Test output will be streamed to your terminal.
